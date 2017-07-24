@@ -35,9 +35,8 @@ public class bubbleSort {
 
             for (int j = 1; j < len - i; j++) {
 
-            // Doing swap for i index
+            // Doing value swap at whole array  for i index
                 if (obj[j - 1] > obj[j]) {
-                    //swap the elements!
                     temp = obj[j - 1];
                     obj[j - 1] = obj[j];
                     obj[j] = temp;
