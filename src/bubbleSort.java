@@ -1,6 +1,6 @@
 /**
  * Developer: Abdul Kader
- * Date- 07/23/2017.
+ * Date- 07/24/2017.
  */
 
 public class bubbleSort {
@@ -24,7 +24,10 @@ public class bubbleSort {
         int temp=0;
         int len=obj.length;
 
-        for(int i=0;i <len;i++){
+       // int[] list = {31, 3, 43, 72, 18, 21, 44, 46, 98, 87};
+
+        for(int i=0;i <=len;i++){
+            System.out.println(len-i);
             for(int j=1;j<len-i;j++){
                 if(obj[j-1] > obj[j]){
                     //swap the elements!
