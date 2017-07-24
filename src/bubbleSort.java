@@ -29,6 +29,10 @@ public class bubbleSort {
         for (int i = 0; i <= len; i++) {
             // start compare for first index(i=31)
 
+            /*
+            * For every loop its swap array first to last so that loop at inner loop we used j < len - i
+            * */
+
             for (int j = 1; j < len - i; j++) {
 
             // Doing swap for i index
