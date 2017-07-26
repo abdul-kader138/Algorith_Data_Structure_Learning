@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class app {
     public static void main(String[] args) {
@@ -9,9 +11,6 @@ public class app {
         String stringArray = s1.nextLine();
         int n = in.nextInt();
         in.nextLine();
-
-        int deleteVal;
-
         List<Integer> list=new ArrayList<Integer>(index);
         List<Integer> finalList=new ArrayList<Integer>(index);
         // add list value
