@@ -11,6 +11,7 @@ public class bubbleSort {
             System.out.print(i + "-");
         }
 
+
         System.out.println("===============");
         list = bubbleShort(list);
 
