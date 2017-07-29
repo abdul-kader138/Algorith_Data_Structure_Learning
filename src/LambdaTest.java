@@ -8,9 +8,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-
-
-public class LamdaTest {
+public class LambdaTest {
     public static void main(String[] args) {
         Map<String, Integer> items = new HashMap<>();
         items.put("A", 10);
