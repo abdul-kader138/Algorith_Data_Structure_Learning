@@ -5,6 +5,8 @@
 
 
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class LambdaTest {
@@ -52,7 +54,6 @@ public class LambdaTest {
 
 
 
-
          /* Lambda test for Comparator interface */
         List<Employee> list = new ArrayList<Employee>();
         list.add(new Employee(1, 28, "D"));
@@ -80,11 +81,35 @@ public class LambdaTest {
         list.forEach((v) -> System.out.println(v.getId() + "-----" + v.getName()));
 
 
+        /* Comparator functional interface checking */
+        Comparator<Employee> comparator = (emp3, emp4) -> emp3.getName().compareTo(emp4.getName());
+        Employee emp3 = new Employee(5, 28, "ABB");
+        Employee emp4 = new Employee(5, 28, "ABB");
+        System.out.println(comparator.compare(emp3, emp4));
+
+
+
+
      /* Lambda test for Stream API */
         Stream<Employee> stream = list.stream().filter(p -> p.getId() > 3);
         stream.forEach((n) -> System.out.println((String) n.getName()));
 
 
+    /* Supplier functional interface */
+        Supplier<Employee> supplier = Employee::new;
+        Employee emp = supplier.get();
+        emp.setId(1371);
+        emp.setAge(43);
+        emp.setName("Human");
+        System.out.println(emp);
+        System.out.println(supplier.get());
+
+
+
+    /* Consumers functional interface */
+
+        Consumer<Employee> consumer=(p)-> System.out.println(p.getName());
+        consumer.accept(new Employee(1121,45,"Human Being"));
     }
 }
 

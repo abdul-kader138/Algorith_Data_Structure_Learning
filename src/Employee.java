@@ -3,6 +3,8 @@ public class Employee implements Comparable {
     private String name;
     private int age;
 
+    public Employee(){}
+
     public Employee(int id, int age, String name) {
         this.id = id;
         this.age = age;
@@ -39,5 +41,14 @@ public class Employee implements Comparable {
         if(age < emp.getAge()) return -1;
         if(age < emp.getAge()) return 1;
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
