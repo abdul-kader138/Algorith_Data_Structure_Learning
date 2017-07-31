@@ -12,7 +12,20 @@ public class LambdaTest {
 
     public static void main(String[] args) {
 
-        /* Lambda test for functional interface */
+        /* Lambda test for functional interface
+
+         /*
+           * For functional interface
+           * 1) first need to define method at interface
+           * 2)then at concrete class need to declare method body
+           * 3)After that we can used that method
+           *
+           *
+        */
+
+
+
+        /*
         LambdaInterface lambdaInterface = (int[] a) -> {
             return a[0];
         };
@@ -23,7 +36,17 @@ public class LambdaTest {
         a[2] = 300;
         System.out.println(lambdaInterface.add(a));
 
+        */
 
+        LambdaInterface<String, Integer> lambdaInterface1 = (z) -> {
+            return Integer.valueOf(z);
+        };
+        Integer val = lambdaInterface1.valueOfInteger("123");
+        System.out.println(val);
+
+
+
+         /* Lambda test for Comparator interface */
         List<Employee> list = new ArrayList<Employee>();
         list.add(new Employee(1, 28, "D"));
         list.add(new Employee(2, 29, "S"));
@@ -38,8 +61,6 @@ public class LambdaTest {
         check.put("BABU4", 4);
         check.put("BABU5", 5);
 
-
-        /* Lambda test for Comparator interface */
         Collections.sort(list);
 
         list.forEach((v) -> System.out.println(v.getId() + "-----" + v.getName()));
@@ -53,9 +74,10 @@ public class LambdaTest {
 
 
      /* Lambda test for Stream API */
+        Stream<Employee> stream = list.stream().filter(p -> p.getId() > 3);
+        stream.forEach((n) -> System.out.println((String) n.getName()));
 
-        Stream<Employee> stream =list.stream().filter(p->p.getId()>3);
-        stream.forEach((n)->System.out.println((String) n.getName()));
+
     }
 }
 
