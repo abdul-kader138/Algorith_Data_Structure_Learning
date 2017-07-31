@@ -41,8 +41,15 @@ public class LambdaTest {
         LambdaInterface<String, Integer> lambdaInterface1 = (z) -> {
             return Integer.valueOf(z);
         };
+
+        /*
+          or will provide same output
+          LambdaInterface<String, Integer> lambdaInterface1=Integer::valueOf;
+         */
         Integer val = lambdaInterface1.valueOfInteger("123");
         System.out.println(val);
+
+
 
 
 
