@@ -5,6 +5,7 @@
 
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class LambdaTest {
 
@@ -49,7 +50,15 @@ public class LambdaTest {
         System.out.println("----------------------------------------------------");
 
         list.forEach((v) -> System.out.println(v.getId() + "-----" + v.getName()));
+
+
+     /* Lambda test for Stream API */
+
+        Stream<Employee> stream =list.stream().filter(p->p.getId()>3);
+        stream.forEach((n)->System.out.println((String) n.getName()));
     }
 }
+
+
 
 
