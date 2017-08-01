@@ -130,14 +130,14 @@ public class LambdaTest {
     /* Stream interface and filter */
 
         List<Employee> empList=new ArrayList<>();
-        empList.add(new Employee(1381,31,"A1"));
-        empList.add(new Employee(1382,32,"A2"));
-        empList.add(new Employee(1383,33,"A3"));
-        empList.add(new Employee(1384,34,"A4"));
-        empList.add(new Employee(1385,35,"A5"));
-        empList.add(new Employee(1386,36,"Abc6"));
-        empList.add(new Employee(1387,37,"Ab7"));
-        empList.add(new Employee(1388,38,"Aab8"));
+        empList.add(new Employee(1381,31,"11"));
+        empList.add(new Employee(1382,32,"12"));
+        empList.add(new Employee(1383,33,"21"));
+        empList.add(new Employee(1384,34,"33"));
+        empList.add(new Employee(1385,35,"411"));
+        empList.add(new Employee(1386,36,"345"));
+        empList.add(new Employee(1387,37,"432"));
+        empList.add(new Employee(1388,38,"678"));
 
         /*
         * Stream represents a sequence of elements on which one or more operations can be performed.
@@ -168,6 +168,18 @@ public class LambdaTest {
         * */
         empList.stream().map((p)->p.getName().toUpperCase())
                 .sorted((a,b)->a.compareTo(b)).filter((a)->a.startsWith("AB")).forEach(System.out::println);
+
+
+        System.out.println(empList.stream().map((p)->p.getName().toUpperCase())
+                .sorted((a,b)->a.compareTo(b)).filter((a)->a.startsWith("AB")).count());
+
+        empList.stream().mapToInt((p)->Integer.parseInt(p.getName())).forEach(System.out::println);
+
+
+
+        /* Stream interface and Map */
+        System.out.println(empList.stream().anyMatch((p) -> p.getName().startsWith("1")));
+
 
     }
 }
