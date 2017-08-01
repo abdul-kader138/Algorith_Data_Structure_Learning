@@ -124,7 +124,7 @@ public class LambdaTest {
         Supplier<Employee> supplier1 = Employee::new;
         System.out.println(empOptional.orElseGet(supplier1));
 
-    /* Stream interface */
+    /* Stream interface and filter */
 
         List<Employee> empList=new ArrayList<>();
         empList.add(new Employee(1381,31,"A1"));
@@ -132,9 +132,9 @@ public class LambdaTest {
         empList.add(new Employee(1383,33,"A3"));
         empList.add(new Employee(1384,34,"A4"));
         empList.add(new Employee(1385,35,"A5"));
-        empList.add(new Employee(1386,36,"A6"));
-        empList.add(new Employee(1387,37,"A7"));
-        empList.add(new Employee(1388,38,"A8"));
+        empList.add(new Employee(1386,36,"ABC6"));
+        empList.add(new Employee(1387,37,"AB7"));
+        empList.add(new Employee(1388,38,"AAB8"));
 
         /*
         * Stream represents a sequence of elements on which one or more operations can be performed.
@@ -143,6 +143,11 @@ public class LambdaTest {
 
         empList.stream().filter((empObj)->empObj.getAge()>35).forEach(System.out::println);
         empList.stream().filter((empObj)->empObj.getAge()>35).forEach((p)-> System.out.println(p.getName()));
+
+
+        /* Stream interface and sort */
+
+        empList.stream().sorted((a,b)-> a.getName().compareTo(b.getName())).filter((empObj)->empObj.getAge()>35).forEach(System.out::println);
 
 
     }
