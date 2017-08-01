@@ -115,7 +115,6 @@ public class LambdaTest {
 
     /* Optional interface */
 
-//        emp=new Employee();
         Optional<Employee> empOptional=Optional.of(emp);
         System.out.println(empOptional.get());
         System.out.println(empOptional.isPresent());
@@ -123,6 +122,10 @@ public class LambdaTest {
         empOptional.orElse(emp22);
         Supplier<Employee> supplier1 = Employee::new;
         System.out.println(empOptional.orElseGet(supplier1));
+
+
+
+
 
     /* Stream interface and filter */
 
@@ -132,23 +135,39 @@ public class LambdaTest {
         empList.add(new Employee(1383,33,"A3"));
         empList.add(new Employee(1384,34,"A4"));
         empList.add(new Employee(1385,35,"A5"));
-        empList.add(new Employee(1386,36,"ABC6"));
-        empList.add(new Employee(1387,37,"AB7"));
-        empList.add(new Employee(1388,38,"AAB8"));
+        empList.add(new Employee(1386,36,"Abc6"));
+        empList.add(new Employee(1387,37,"Ab7"));
+        empList.add(new Employee(1388,38,"Aab8"));
 
         /*
         * Stream represents a sequence of elements on which one or more operations can be performed.
         * filter is a operation which performed on stream
         * */
 
-        empList.stream().filter((empObj)->empObj.getAge()>35).forEach(System.out::println);
-        empList.stream().filter((empObj)->empObj.getAge()>35).forEach((p)-> System.out.println(p.getName()));
+       empList.stream().filter((empObj)->empObj.getAge()>35).forEach(System.out::println);
+       empList.stream().filter((empObj)->empObj.getAge()>35).forEach((p)-> System.out.println(p.getName()));
+
+
+
 
 
         /* Stream interface and sort */
 
         empList.stream().sorted((a,b)-> a.getName().compareTo(b.getName())).filter((empObj)->empObj.getAge()>35).forEach(System.out::println);
 
+
+
+
+
+
+        /* Stream interface and Map */
+
+        /*
+        * Stream represents a sequence of elements on which one or more operations can be performed.
+        * The intermediate operation map converts each element into another object via the given function.
+        * */
+        empList.stream().map((p)->p.getName().toUpperCase())
+                .sorted((a,b)->a.compareTo(b)).filter((a)->a.startsWith("AB")).forEach(System.out::println);
 
     }
 }
