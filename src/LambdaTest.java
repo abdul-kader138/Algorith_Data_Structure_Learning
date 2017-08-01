@@ -111,6 +111,21 @@ public class LambdaTest {
 
         Consumer<Employee> consumer=(p)-> System.out.println(p.getName());
         consumer.accept(new Employee(1121,45,"Human Being"));
+
+
+    /* Optional interface */
+
+//        emp=new Employee();
+        Optional<Employee> empOptional=Optional.of(emp);
+        System.out.println(empOptional.get());
+        System.out.println(empOptional.isPresent());
+        Employee emp22=new Employee(132,45,"MMMM");
+        empOptional.orElse(emp22);
+        Supplier<Employee> supplier1 = Employee::new;
+        System.out.println(empOptional.orElseGet(supplier1));
+
+
+
     }
 }
 
