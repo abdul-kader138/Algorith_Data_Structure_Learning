@@ -142,6 +142,7 @@ public class LambdaTest {
         * */
 
         empList.stream().filter((empObj)->empObj.getAge()>35).forEach(System.out::println);
+        empList.stream().filter((empObj)->empObj.getAge()>35).forEach((p)-> System.out.println(p.getName()));
 
 
     }
