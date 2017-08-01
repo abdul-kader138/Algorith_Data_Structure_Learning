@@ -6,14 +6,20 @@
 
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.SynchronousQueue;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LambdaTest {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         /* Lambda test for functional interface
 
@@ -55,6 +61,8 @@ public class LambdaTest {
 
 
 
+
+
          /* Lambda test for Comparator interface */
         List<Employee> list = new ArrayList<Employee>();
         list.add(new Employee(1, 28, "D"));
@@ -91,9 +99,16 @@ public class LambdaTest {
 
 
 
+
+
+
+
+
      /* Lambda test for Stream API */
         Stream<Employee> stream = list.stream().filter(p -> p.getId() > 3);
         stream.forEach((n) -> System.out.println((String) n.getName()));
+
+
 
 
     /* Supplier functional interface */
@@ -107,19 +122,26 @@ public class LambdaTest {
 
 
 
+
+
     /* Consumers functional interface */
 
-        Consumer<Employee> consumer=(p)-> System.out.println(p.getName());
-        consumer.accept(new Employee(1121,45,"Human Being"));
+        Consumer<Employee> consumer = (p) -> System.out.println(p.getName());
+        consumer.accept(new Employee(1121, 45, "Human Being"));
+
+
+
+
+
 
 
     /* Optional interface */
 
-        Optional<Employee> empOptional=Optional.of(emp);
-        System.out.println(empOptional.get());
-        System.out.println(empOptional.isPresent());
-        Employee emp22=new Employee(132,45,"MMMM");
-        empOptional.orElse(emp22);
+        Optional<Employee> empOptional = Optional.empty();
+        if (empOptional.isPresent()) System.out.println(empOptional.get());
+        Employee emp22 = new Employee(132, 45, "MMMM");
+        System.out.println(empOptional.orElse(emp22));
+//        System.out.println(empOptional.orElseThrow(Exception::new));
         Supplier<Employee> supplier1 = Employee::new;
         System.out.println(empOptional.orElseGet(supplier1));
 
@@ -129,23 +151,27 @@ public class LambdaTest {
 
     /* Stream interface and filter */
 
-        List<Employee> empList=new ArrayList<>();
-        empList.add(new Employee(1381,31,"11"));
-        empList.add(new Employee(1382,32,"12"));
-        empList.add(new Employee(1383,33,"21"));
-        empList.add(new Employee(1384,34,"33"));
-        empList.add(new Employee(1385,35,"411"));
-        empList.add(new Employee(1386,36,"345"));
-        empList.add(new Employee(1387,37,"432"));
-        empList.add(new Employee(1388,38,"678"));
+        List<Employee> empList = new ArrayList<>();
+        empList.add(new Employee(1381, 31, "11"));
+        empList.add(new Employee(1382, 32, "12"));
+        empList.add(new Employee(1383, 33, "21"));
+        empList.add(new Employee(1384, 34, "33"));
+        empList.add(new Employee(1385, 35, "21"));
+        empList.add(new Employee(1386, 36, "345"));
+        empList.add(new Employee(1387, 37, "122"));
+        empList.add(new Employee(1388, 38, "11"));
 
         /*
         * Stream represents a sequence of elements on which one or more operations can be performed.
         * filter is a operation which performed on stream
         * */
 
-       empList.stream().filter((empObj)->empObj.getAge()>35).forEach(System.out::println);
-       empList.stream().filter((empObj)->empObj.getAge()>35).forEach((p)-> System.out.println(p.getName()));
+        empList.stream().filter((empObj) -> empObj.getAge() > 35).forEach(System.out::println);
+        empList.stream().filter((empObj) -> empObj.getAge() > 35).forEach((p) -> System.out.println(p.getName()));
+
+
+
+
 
 
 
@@ -153,7 +179,9 @@ public class LambdaTest {
 
         /* Stream interface and sort */
 
-        empList.stream().sorted((a,b)-> a.getName().compareTo(b.getName())).filter((empObj)->empObj.getAge()>35).forEach(System.out::println);
+        empList.stream().sorted((a, b) -> a.getName().compareTo(b.getName())).filter((empObj) -> empObj.getAge() > 35).forEach(System.out::println);
+
+
 
 
 
@@ -166,14 +194,18 @@ public class LambdaTest {
         * Stream represents a sequence of elements on which one or more operations can be performed.
         * The intermediate operation map converts each element into another object via the given function.
         * */
-        empList.stream().map((p)->p.getName().toUpperCase())
-                .sorted((a,b)->a.compareTo(b)).filter((a)->a.startsWith("AB")).forEach(System.out::println);
+        empList.stream().map((p) -> p.getName().toUpperCase())
+                .sorted((a, b) -> a.compareTo(b)).filter((a) -> a.startsWith("AB")).forEach(System.out::println);
 
 
-        System.out.println(empList.stream().map((p)->p.getName().toUpperCase())
-                .sorted((a,b)->a.compareTo(b)).filter((a)->a.startsWith("AB")).count());
+        System.out.println(empList.stream().map((p) -> p.getName().toUpperCase())
+                .sorted((a, b) -> a.compareTo(b)).filter((a) -> a.startsWith("AB")).count());
 
-        empList.stream().mapToInt((p)->Integer.parseInt(p.getName())).forEach(System.out::println);
+        empList.stream().mapToInt((p) -> Integer.parseInt(p.getName())).forEach(System.out::println);
+
+
+
+
 
 
 
@@ -184,6 +216,43 @@ public class LambdaTest {
         System.out.println(empList.stream().anyMatch((p) -> p.getName().startsWith("1")));
 
 
+
+
+
+
+
+        /* Predicates Example*/
+        /*
+         *In java 8, Predicate a functional interface and
+         * can therefore be used as the assignment target for a lambda expression or method reference.
+         */
+
+        empList.stream().filter(EmployeePredicates.isStartWith1()).forEach(System.out::println);
+
+
+
+
+
+
+
+         /* Distinct Example*/
+        System.out.println(empList.stream().filter(distinctByKey(p -> p.getName())).collect(Collectors.toList()));
+
+
+
+
+
+
+    }
+
+
+
+
+
+    /* Method for distinct an user defined object  */
+    public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+        Map<Object, Boolean> map = new ConcurrentHashMap<>();
+        return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 }
 
