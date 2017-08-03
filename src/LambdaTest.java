@@ -209,11 +209,15 @@ public class LambdaTest {
 
 
 
+
+
         /* Stream interface and match */
         /*
         * Various matching operations can be used to check whether a certain predicate matches the stream.
         * */
         System.out.println(empList.stream().anyMatch((p) -> p.getName().startsWith("1")));
+
+
 
 
 
