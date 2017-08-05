@@ -252,8 +252,15 @@ public class LambdaTest {
 
         int totalAge = empList.stream()
                 .map(emp12 -> emp12.getAge())
-                .reduce(0,(a,b) -> a+b);
+                .reduce(0, (a, b) -> a + b);
         System.out.println("Total salary expense: "+totalAge);
+
+
+        String name = empList.stream()
+                .map(emp12 -> emp12.getName())
+                .reduce("",(a,b) -> a+"------"+b);
+        System.out.println("Employee are: "+name);
+
 
 
     }
