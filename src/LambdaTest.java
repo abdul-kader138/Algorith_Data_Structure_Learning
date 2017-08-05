@@ -137,6 +137,10 @@ public class LambdaTest {
 
     /* Optional interface */
 
+        /*
+        * It is used to represent a value is present or absent.
+        * */
+
         Optional<Employee> empOptional = Optional.empty();
         if (empOptional.isPresent()) System.out.println(empOptional.get());
         Employee emp22 = new Employee(132, 45, "MMMM");
@@ -285,6 +289,15 @@ public class LambdaTest {
         List<Double> getRandomNumber = new ArrayList<>();
         Stream.generate(Math::random).limit(5).forEach(a -> getRandomNumber.add(a));
         getRandomNumber.forEach(a -> System.out.println(a));
+
+
+
+
+
+           /* Stream findAny() & findFirst() Example  */
+
+        Optional<Employee> optional=empList.stream().filter((a)->a.getAge()>36).findAny();
+        if(optional.isPresent()) System.out.println(optional.get().getName());
 
     }
 
