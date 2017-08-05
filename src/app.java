@@ -2,6 +2,13 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
+/*
+* Still not resolve- Hacker Rank Problem
+*
+*
+*
+* */
+
 public class app {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -21,7 +28,6 @@ public class app {
                 list.add(Integer.parseInt(listVal[i]));
             }
         }
-
 
 
         for (int i = 0; i < n; i++) {
