@@ -253,13 +253,13 @@ public class LambdaTest {
         int totalAge = empList.stream()
                 .map(emp12 -> emp12.getAge())
                 .reduce(0, (a, b) -> a + b);
-        System.out.println("Total salary expense: "+totalAge);
+        System.out.println("Total salary expense: " + totalAge);
 
 
         String name = empList.stream()
                 .map(emp12 -> emp12.getName())
-                .reduce("",(a,b) -> a+"------"+b);
-        System.out.println("Employee are: "+name);
+                .reduce("", (a, b) -> a + "------" + b);
+        System.out.println("Employee are: " + name);
 
 
 
@@ -273,13 +273,20 @@ public class LambdaTest {
         *
         * */
 
-         System.out.println(empList.stream().limit(3).collect(Collectors.toList()));
+        System.out.println(empList.stream().limit(3).collect(Collectors.toList()));
 
+
+
+
+
+
+           /* Stream generate Example  */
+
+        List<Double> getRandomNumber = new ArrayList<>();
+        Stream.generate(Math::random).limit(5).forEach(a -> getRandomNumber.add(a));
+        getRandomNumber.forEach(a -> System.out.println(a));
 
     }
-
-
-
 
 
     /* Method for distinct an user defined object  */
