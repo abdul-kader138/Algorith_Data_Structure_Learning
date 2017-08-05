@@ -37,7 +37,6 @@ public class app {
         }
 
 
-
         String finalVal = "";
         if (finalList.size() > 0) {
             for (int val : finalList) {
