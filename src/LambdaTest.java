@@ -263,6 +263,19 @@ public class LambdaTest {
 
 
 
+
+
+         /* Collect & Limit Example  */
+
+
+        /*
+        * Collectors.toList() used for return limited 3 list from empList
+        *
+        * */
+
+         System.out.println(empList.stream().limit(3).collect(Collectors.toList()));
+
+
     }
 
 
