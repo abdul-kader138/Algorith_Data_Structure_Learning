@@ -7,12 +7,10 @@
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.SynchronousQueue;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -90,6 +88,12 @@ public class LambdaTest {
         list.forEach((v) -> System.out.println(v.getId() + "-----" + v.getName()));
 
 
+
+
+
+
+
+
         /* Comparator functional interface checking */
         Comparator<Employee> comparator = (emp3, emp4) -> emp3.getName().compareTo(emp4.getName());
         Employee emp3 = new Employee(5, 28, "ABB");
@@ -107,6 +111,10 @@ public class LambdaTest {
      /* Lambda test for Stream API */
         Stream<Employee> stream = list.stream().filter(p -> p.getId() > 3);
         stream.forEach((n) -> System.out.println((String) n.getName()));
+
+
+
+
 
 
 
@@ -269,6 +277,7 @@ public class LambdaTest {
 
 
 
+
          /* Collect & Limit Example  */
 
 
@@ -278,6 +287,7 @@ public class LambdaTest {
         * */
 
         System.out.println(empList.stream().limit(3).collect(Collectors.toList()));
+
 
 
 
@@ -294,10 +304,27 @@ public class LambdaTest {
 
 
 
+
+
            /* Stream findAny() & findFirst() Example  */
 
-        Optional<Employee> optional=empList.stream().filter((a)->a.getAge()>36).findAny();
+        Optional<Employee> optional=empList.stream().filter((a)->a.getAge()>36).findFirst();
         if(optional.isPresent()) System.out.println(optional.get().getName());
+
+
+
+
+
+
+        /* Distinct example */
+
+        System.out.println("---------------------------------------------------------------------");
+
+        empList=empList.stream().distinct().collect(Collectors.toList());
+        empList.forEach((a) -> System.out.println(a.getName()));
+
+
+
 
     }
 
