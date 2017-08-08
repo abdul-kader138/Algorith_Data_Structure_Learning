@@ -5,7 +5,9 @@
  **/
 
 
+import java.text.SimpleDateFormat;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
@@ -363,6 +365,8 @@ public class LambdaTest {
         LocalTime localTime1=LocalTime.now(zone1);
         System.out.println(localTime.getHour()+":"+localTime.getMinute()+":"+localTime.getSecond());
         System.out.println(localTime1.getHour()+":"+localTime1.getMinute()+":"+localTime1.getSecond());
+
+        System.out.println(localTime);
 
     }
 
