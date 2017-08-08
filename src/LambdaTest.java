@@ -5,6 +5,7 @@
  **/
 
 
+import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -17,10 +18,11 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
 public class LambdaTest {
 
 
-    @CustomAnnotation
+
     public static void main(String[] args) throws Exception {
 
         /* Lambda test for functional interface
@@ -343,6 +345,15 @@ public class LambdaTest {
 
 
 
+
+        /*
+        * New concept ZoneId implement by using this
+        * we can add any zone like Africa,Asia local
+        * time and date
+        *
+        * */
+
+
         /* New Date example */
         Clock clock = Clock.systemDefaultZone();
         long millis = clock.millis();
@@ -371,6 +382,23 @@ public class LambdaTest {
         System.out.println(localDate+""+Month.AUGUST);
         System.out.println(localDate1);
 
+
+
+
+
+        /*
+        * First create methods object where custom annotation use
+        * then create custom annotation object using methods
+        * then it is possible to create annotation object value
+        *
+        * */
+
+        /* Annotation Example */
+
+        Method methods = LambdaTest.class.getMethod("testCustomAnnotation");
+        CustomAnnotation customAnnotation2=(CustomAnnotation)methods.getAnnotation(CustomAnnotation.class);
+        if(customAnnotation2 !=null) System.out.println(customAnnotation2.name());
+
     }
 
 
@@ -385,6 +413,17 @@ public class LambdaTest {
         return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
 
     }
+
+
+
+
+    /* Annotation Check method */
+    @CustomAnnotation(name = "Abdul Kader", age=31)
+    public static void testCustomAnnotation(){
+        System.out.println("Test Annotation");
+    }
+
+
 
 
 }
