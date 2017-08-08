@@ -346,12 +346,10 @@ public class LambdaTest {
         Clock clock = Clock.systemDefaultZone();
         long millis = clock.millis();
         Instant instant = clock.instant();
-        Date legacyDate = Date.from(instant);   // legacy java.util.Date
+        Date legacyDate = Date.from(instant);   // legacy java with zone id.util.Date
         System.out.println(legacyDate.getMonth());
 
         System.out.println(ZoneId.getAvailableZoneIds());
-
-
         // prints all available timezone ids
         ZoneId zone1 = ZoneId.of("Europe/Berlin");
         ZoneId zone2 = ZoneId.of("Brazil/East");
@@ -363,12 +361,17 @@ public class LambdaTest {
 
         LocalTime localTime=LocalTime.now(zone3);
         LocalTime localTime1=LocalTime.now(zone1);
-        System.out.println(localTime.getHour()+":"+localTime.getMinute()+":"+localTime.getSecond());
-        System.out.println(localTime1.getHour()+":"+localTime1.getMinute()+":"+localTime1.getSecond());
-
-        System.out.println(localTime);
+        DateTimeFormatter timeFormatter = DateTimeFormatter
+                .ofPattern("KK:mm:ss a");
+        System.out.println(localTime.format(timeFormatter));
+        System.out.println(localTime1.format(timeFormatter));
 
     }
+
+
+
+
+
 
 
     /* Method for distinct an user defined object  */
