@@ -20,6 +20,7 @@ import java.util.stream.Stream;
 public class LambdaTest {
 
 
+    @CustomAnnotation
     public static void main(String[] args) throws Exception {
 
         /* Lambda test for functional interface
