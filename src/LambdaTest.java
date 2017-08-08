@@ -367,7 +367,7 @@ public class LambdaTest {
         // prints Date based on timezone
         LocalDate localDate=LocalDate.now(zone1);
         LocalDate localDate1=LocalDate.now(zone1);
-        System.out.println(localDate);
+        System.out.println(localDate+""+Month.AUGUST);
         System.out.println(localDate1);
 
     }
