@@ -359,10 +359,16 @@ public class LambdaTest {
         System.out.println(zone3.getRules());
         LocalTime localTime=LocalTime.now(zone3);
         LocalTime localTime1=LocalTime.now(zone1);
+        // prints time based on timezone
         DateTimeFormatter timeFormatter = DateTimeFormatter
                 .ofPattern("KK:mm:ss a");
         System.out.println(localTime.format(timeFormatter));
         System.out.println(localTime1.format(timeFormatter));
+        // prints Date based on timezone
+        LocalDate localDate=LocalDate.now(zone1);
+        LocalDate localDate1=LocalDate.now(zone1);
+        System.out.println(localDate);
+        System.out.println(localDate1);
 
     }
 
