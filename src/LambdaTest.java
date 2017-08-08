@@ -357,8 +357,6 @@ public class LambdaTest {
         System.out.println(zone1.getRules());
         System.out.println(zone2.getRules());
         System.out.println(zone3.getRules());
-
-
         LocalTime localTime=LocalTime.now(zone3);
         LocalTime localTime1=LocalTime.now(zone1);
         DateTimeFormatter timeFormatter = DateTimeFormatter
