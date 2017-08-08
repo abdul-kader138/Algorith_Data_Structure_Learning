@@ -7,26 +7,18 @@ public class Solution {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int countValid = 0;
-        int countInvalid = 0;
-        int testCases = Integer.parseInt(in.nextLine());
-        while (testCases > 0) {
-            String username = in.nextLine();
-//            String regex = "^[a-zA-Z0-9_]*$";
-            String regex = "^[A-Za-z][A-Za-z0-9_]{7,29}/*$";
-            Pattern r = Pattern.compile(regex);
-            Matcher m = r.matcher(username);
-            if (m.find()) {
-                System.out.println("Valid");
-                countValid++;
-            } else {
-                System.out.println("Invalid");
-                countInvalid++;
-            }
-            testCases--;
+        int numSentences = Integer.parseInt(in.nextLine());
+
+        while (numSentences-- > 0) {
+            String input = in.nextLine();
+
+            // Check for subsequences of input that match the compiled pattern
+                input = input.replaceAll("(?i)\\b([a-z]+)\\b(?:\\s+\\1\\b)+", "$1");
+
+            // Prints the modified sentence.
+            System.out.println(input);
         }
 
-        System.out.println(countValid);
-        System.out.println(countInvalid);
+        in.close();
     }
 }

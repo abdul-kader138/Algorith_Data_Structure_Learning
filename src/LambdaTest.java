@@ -5,6 +5,7 @@
  **/
 
 
+import java.time.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
@@ -49,12 +50,16 @@ public class LambdaTest {
             return Integer.valueOf(z);
         };
 
+
+
+
         /*
           or will provide same output
           LambdaInterface<String, Integer> lambdaInterface1=Integer::valueOf;
          */
         Integer val = lambdaInterface1.valueOfInteger("123");
         System.out.println(val);
+
 
 
 
@@ -132,6 +137,8 @@ public class LambdaTest {
 
 
 
+
+
     /* Consumers functional interface */
 
         Consumer<Employee> consumer = (p) -> System.out.println(p.getName());
@@ -161,6 +168,8 @@ public class LambdaTest {
 
 
 
+
+
     /* Stream interface and filter */
 
         List<Employee> empList = new ArrayList<>();
@@ -172,6 +181,11 @@ public class LambdaTest {
         empList.add(new Employee(1386, 36, "345"));
         empList.add(new Employee(1387, 37, "122"));
         empList.add(new Employee(1388, 38, "11"));
+
+
+
+
+
 
         /*
         * Stream represents a sequence of elements on which one or more operations can be performed.
@@ -190,7 +204,6 @@ public class LambdaTest {
 
 
         /* Stream interface and sort */
-
         empList.stream().sorted((a, b) -> a.getName().compareTo(b.getName())).filter((empObj) -> empObj.getAge() > 35).forEach(System.out::println);
 
 
@@ -278,7 +291,7 @@ public class LambdaTest {
 
 
 
-         /* Collect & Limit Example  */
+       /* Collect & Limit Example  */
 
 
         /*
@@ -294,7 +307,7 @@ public class LambdaTest {
 
 
 
-           /* Stream generate Example  */
+        /* Stream generate Example  */
 
         List<Double> getRandomNumber = new ArrayList<>();
         Stream.generate(Math::random).limit(5).forEach(a -> getRandomNumber.add(a));
@@ -306,10 +319,10 @@ public class LambdaTest {
 
 
 
-           /* Stream findAny() & findFirst() Example  */
+        /* Stream findAny() & findFirst() Example  */
 
-        Optional<Employee> optional=empList.stream().filter((a)->a.getAge()>36).findFirst();
-        if(optional.isPresent()) System.out.println(optional.get().getName());
+        Optional<Employee> optional = empList.stream().filter((a) -> a.getAge() > 36).findFirst();
+        if (optional.isPresent()) System.out.println(optional.get().getName());
 
 
 
@@ -320,11 +333,36 @@ public class LambdaTest {
 
         System.out.println("---------------------------------------------------------------------");
 
-        empList=empList.stream().distinct().collect(Collectors.toList());
+        empList = empList.stream().distinct().collect(Collectors.toList());
         empList.forEach((a) -> System.out.println(a.getName()));
 
 
 
+
+
+        /* New Date example */
+        Clock clock = Clock.systemDefaultZone();
+        long millis = clock.millis();
+        Instant instant = clock.instant();
+        Date legacyDate = Date.from(instant);   // legacy java.util.Date
+        System.out.println(legacyDate.getMonth());
+
+        System.out.println(ZoneId.getAvailableZoneIds());
+
+
+        // prints all available timezone ids
+        ZoneId zone1 = ZoneId.of("Europe/Berlin");
+        ZoneId zone2 = ZoneId.of("Brazil/East");
+        ZoneId zone3 = ZoneId.of("Asia/Dhaka");
+        System.out.println(zone1.getRules());
+        System.out.println(zone2.getRules());
+        System.out.println(zone3.getRules());
+
+
+        LocalTime localTime=LocalTime.now(zone3);
+        LocalTime localTime1=LocalTime.now(zone1);
+        System.out.println(localTime.getHour()+":"+localTime.getMinute()+":"+localTime.getSecond());
+        System.out.println(localTime1.getHour()+":"+localTime1.getMinute()+":"+localTime1.getSecond());
 
     }
 
@@ -333,7 +371,10 @@ public class LambdaTest {
     public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
         Map<Object, Boolean> map = new ConcurrentHashMap<>();
         return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+
     }
+
+
 }
 
 
