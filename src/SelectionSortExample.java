@@ -18,7 +18,7 @@ public class SelectionSortExample {
         for (int i = 0; i < list.length; i++) {
             int index = i;
             for (int j = i + 1; j < list.length; j++) {
-                if (list[i] < list[index]) {
+                if (list[j] < list[index]) {
                     index = j;
                 }
             }
@@ -33,7 +33,6 @@ public class SelectionSortExample {
 
 
     public static void main(String[] args) {
-
         int[] valueList = {9, 14, 3, 2, 43, 11, 58, 22};
         selectionSort(valueList);
     }
