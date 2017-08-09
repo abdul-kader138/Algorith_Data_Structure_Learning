@@ -17,11 +17,16 @@ public class SelectionSortExample {
 
         for (int i = 0; i < list.length; i++) {
             int index = i;
+
+            /* Check current element with sub set array  */
             for (int j = i + 1; j < list.length; j++) {
                 if (list[j] < list[index]) {
                     index = j;
                 }
             }
+
+             /* if current element is greater than  sub set array ,
+             swap current element with subset array lowest element */
             int temp = list[i];
             list[i] = list[index];
             list[index] = temp;
@@ -33,7 +38,7 @@ public class SelectionSortExample {
 
 
     public static void main(String[] args) {
-        int[] valueList = {9, 14, 3, 2, 43, 11, 58, 22};
+        int[] valueList = {5, 1, 15, -5, 16, 2, 12, 14};
         selectionSort(valueList);
     }
 }
