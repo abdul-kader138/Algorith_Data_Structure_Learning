@@ -3,6 +3,16 @@
  * Date- 07/24/2017.
  */
 
+
+/*
+* In bubble sort, when sorting
+* then comparison with next
+* element if next element small
+* then swap it with current element
+* */
+
+
+
 public class bubbleSort {
 
     public static void main(String[] args) {
@@ -10,8 +20,6 @@ public class bubbleSort {
         for (int i : list) {
             System.out.print(i + "-");
         }
-
-
         System.out.println("===============");
         list = bubbleShort(list);
 
@@ -36,7 +44,7 @@ public class bubbleSort {
 
             for (int j = 1; j < len - i; j++) {
 
-            // Doing value swap at whole array  for i index
+                // Doing value swap at whole array  for i index
                 if (obj[j - 1] > obj[j]) {
                     temp = obj[j - 1];
                     obj[j - 1] = obj[j];
