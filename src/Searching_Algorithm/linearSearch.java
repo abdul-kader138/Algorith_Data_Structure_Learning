@@ -1,3 +1,5 @@
+package Searching_Algorithm;
+
 /**
  * Developer: Abdul Kader
  * Date- 07/23/2017.

@@ -1,3 +1,5 @@
+package String_Example;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -30,6 +32,6 @@ public class Anagrams {
         String b = scan.next();
         scan.close();
         boolean ret = isAnagram(a, b);
-        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+        System.out.println( (ret) ? "String_Example.Anagrams" : "Not String_Example.Anagrams" );
     }
 }
