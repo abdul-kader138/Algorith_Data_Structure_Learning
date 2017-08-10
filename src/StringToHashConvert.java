@@ -26,7 +26,8 @@ public class StringToHashConvert {
     private static String getMD5Hash(String data) {
         String result = null;
         try {
-            MessageDigest digest = MessageDigest.getInstance("MD5");
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");  // for SHA-256
+//            MessageDigest digest = MessageDigest.getInstance("MD5");    // for MD5
             byte[] hash = digest.digest(data.getBytes("UTF-8"));
             return bytesToHex(hash); // make it printable
         }catch(Exception ex) {
