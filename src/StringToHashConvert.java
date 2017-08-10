@@ -1,10 +1,14 @@
+/**
+ * Developer: Abdul Kader
+ * Date- 8/10/2017.
+ */
+
 import javax.xml.bind.DatatypeConverter;
-import java.lang.reflect.Method;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Scanner;
 
-public class Solution {
+
+public class StringToHashConvert {
 
     public static void main(String[] args) throws Exception{
         Scanner sn = new Scanner(System.in);
@@ -41,5 +45,3 @@ public class Solution {
         return DatatypeConverter.printHexBinary(hash);
     }
 }
-
-
