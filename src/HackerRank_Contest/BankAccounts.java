@@ -47,9 +47,26 @@ public class BankAccounts {
         queue.add(17);
 
         System.out.println(queue.peek());
+
+
+
 //        System.out.println(queue.poll());
 
         for(int i:queue) System.out.println(i);
+
+
+
+        Stack<Integer> stack=new Stack<>();
+        stack.add(21);
+        stack.add(22);
+        stack.add(23);
+        stack.add(24);
+        stack.add(25);
+
+        stack.peek();
+
+        for(int j:stack) System.out.println(j);
+
         in.close();
     }
 
