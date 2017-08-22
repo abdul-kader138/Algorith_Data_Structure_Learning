@@ -2,9 +2,7 @@ package Lambda;
 
 import java.util.Stack;
 
-/**
- * Created by a.kader on 8/21/2017.
- */
+
 public class App {
 
     public static void main(String [] args){
@@ -32,6 +30,7 @@ public class App {
         stack.add(employee2);
 
 
+//        List<Employee> list=stack.stream().filter((t) -> t.getAge() > 29);
         double totalSalary=stack.stream().filter((t) -> t.getAge() > 29).mapToDouble(t -> t.getSalary()).sum();
         System.out.println(totalSalary);
 
