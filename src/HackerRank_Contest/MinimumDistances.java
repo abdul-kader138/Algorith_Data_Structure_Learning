@@ -13,6 +13,7 @@ public class MinimumDistances {
         for (int A_i = 0; A_i < n; A_i++) {
             A[A_i] = in.nextInt();
         }
+
         getValue(A);
     }
 
@@ -24,13 +25,15 @@ public class MinimumDistances {
             for (int j = 0; j < obj.length; j++) {
                 int previousValue = 0;
                 if (i != j) {
-                    if (valueList.size() > 0) previousValue = valueList.get(obj[j]);
+                    if (valueList.size() > 0) previousValue = ((valueList.get(obj[j])!=null) ? valueList.get(obj[j]):0);
+
                     if (obj[i] == obj[j] && previousValue < j && previousValue >-1) {
                         valueList.put(obj[j], j);
                     }
                 }
             }
         }
+
 
         List<Integer> indexList = Arrays.asList(obj);
         List<Integer> minValObj = new ArrayList<>();
