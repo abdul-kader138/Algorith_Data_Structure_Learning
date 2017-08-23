@@ -14,9 +14,11 @@ public class Kangaroo {
             firstVal+=v1;
             lastVal+=v2;
         }
-//        System.out.println(firstVal);
-//        System.out.println(lastVal);
+        System.out.println(firstVal);
+        System.out.println(lastVal);
         if(firstVal==lastVal) return "YES";
+        if((firstVal-lastVal)/v1  ==0) return "YES";
+        if((lastVal-firstVal)/v2  ==0) return "YES";
         else return  "NO";
     }
 
