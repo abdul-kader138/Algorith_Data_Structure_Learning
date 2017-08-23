@@ -23,17 +23,17 @@ public class JumpingOnTheClouds {
         int currentVal = 0;
         int previousVAl = 0;
         int nextVAl = 0;
-        for (int j = 1; j < obj.length; j++) {
-            if (currentVal == obj[j] && obj[j] == 0) jump += 1;
-            if (checkNextNumber(obj, j, (j + 1))) jump -= 1;
+        for (int j = 0; j < obj.length; j++) {
+            if ((j + 1) < obj.length && obj[j] == obj[j + 1] && obj[j] == 0) {
+                jump += 1;
+                if ((j + 2) < obj.length && obj[j + 1] == obj[j + 2]) j = j + 1;
+            }
+
+            if ((j + 2) < obj.length && obj[j] != obj[j + 1] && obj[j] == 0 && obj[j] == obj[j + 2]) jump += 1;
         }
         return jump;
     }
 
 
-    private static boolean checkNextNumber(int[] valueList, int currentIndex, int nextIndex) {
-        if (nextIndex < valueList.length && valueList[currentIndex] == valueList[nextIndex] && valueList[currentIndex] == 0)
-            return true;
-        return false;
-    }
+
 }
