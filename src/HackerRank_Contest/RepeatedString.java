@@ -1,8 +1,8 @@
 package HackerRank_Contest;
 
-/**
- * Created by a.kader on 8/27/2017.
- */
+import java.util.Scanner;
+
+
 public class RepeatedString {
 
     public static void main(String[] args) {
