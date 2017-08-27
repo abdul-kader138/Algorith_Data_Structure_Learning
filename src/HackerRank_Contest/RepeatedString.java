@@ -1,6 +1,8 @@
 package HackerRank_Contest;
 
+import java.util.Date;
 import java.util.Scanner;
+import java.util.SimpleTimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,33 +14,36 @@ public class RepeatedString {
         String s = in.next();
         long n = in.nextLong();
         long result = 0;
-        if (n < Integer.MAX_VALUE) {
+        String stringBuilder = "";
+        if (n < 1000000000000l) {
             Pattern p = Pattern.compile("a");
             Matcher m = p.matcher(s);
             if (m.find()) {
-                StringBuilder stringBuilder = new StringBuilder();
-                for (long i = 0; i < n; i++) {
-                    long mainLen = (long) stringBuilder.length() + (long) s.length();
-                    if (mainLen < n) stringBuilder.append(s);
+                int lop = (int) (n / (long) s.length());
+                for (long i = 0; i <= n; i++) {
+                    if ((long) stringBuilder.length() == n) break;
+                    long mainLen = stringBuilder.length() + s.length();
+                    if (mainLen < n) stringBuilder = stringBuilder + s;
                     else {
-                        long len = (long) n - stringBuilder.length();
+                        long len = n - stringBuilder.length();
                         if (len > 0) {
                             String out = s.substring(0, (int) len);
-                            stringBuilder.append(out);
-                            break;
+                            stringBuilder = stringBuilder + out;
                         }
                     }
 
-
                 }
                 Pattern p1 = Pattern.compile("a");
-                Matcher m1 = p.matcher(stringBuilder);
+                Matcher m1 = p1.matcher(stringBuilder);
                 while (m1.find()) result += 1;
             }
 
-        }
+        } else result = n;
 
         System.out.println(result);
+
+//        System.out.println((long) stringBuilder.length());
+//        System.out.println(n);
 
 
     }
