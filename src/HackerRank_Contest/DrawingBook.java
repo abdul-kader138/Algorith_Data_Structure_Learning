@@ -8,6 +8,11 @@ public class DrawingBook {
 
     static int solve(int n, int p){
         // Complete this function
+//        int first=p-1;
+//
+//        int last=n-p;
+//        if(first<last) return first;
+        return 1;
     }
 
     public static void main(String[] args) {
