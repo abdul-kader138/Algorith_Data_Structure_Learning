@@ -39,4 +39,6 @@ public class ElectronicsShop {
         int moneySpent = getMoneySpent(keyboards, drives, s);
         System.out.println(moneySpent);
     }
+
+
 }
