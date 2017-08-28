@@ -3,9 +3,7 @@ package HackerRank_Contest;
 import java.math.BigInteger;
 import java.util.Scanner;
 
-/**
- * Created by a.kader on 8/28/2017.
- */
+
 public class AVeryBigSum {
     static long aVeryBigSum(int n, long[] ar) {
         long sum=0l;
