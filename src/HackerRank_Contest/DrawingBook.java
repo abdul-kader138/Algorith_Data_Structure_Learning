@@ -13,20 +13,22 @@ public class DrawingBook {
             for(int i=2;i<=p;i+=2){
                 firstForward+=1;
             }
-            for(int i=p;i>=p;i-=2){
+            for(int i=n;i>p;i-=2){
                 backWard+=1;
             }
         }
         else{
-            for(int i=1;i<=p;i+=2){
+            for(int i=1;i<p;i+=2){
                 firstForward+=1;
             }
-            for(int i=p;i>=p;i-=1){
+            for(int i=n;i>p;i-=2){
                 backWard+=1;
             }
         }
 
         if (n == p) return 0;
+        if (p ==1) return 0;
+        if ((n-p)==1) return 0;
         if (firstForward < backWard) return firstForward;
         else return backWard;
     }
