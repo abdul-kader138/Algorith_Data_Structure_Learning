@@ -7,11 +7,9 @@ public class DrawingBook {
 
 
     static int solve(int n, int p) {
-
+        if(n==p) return 0;
         int firstForward = p - 1;
-
-        int backWard = n - p;
-
+        int backWard = ((n - p)-1);
         if (firstForward < backWard) return firstForward;
         else return backWard;
     }
