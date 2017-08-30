@@ -15,9 +15,13 @@ public class MarcsCakewalk {
 
         long currentResult = 0;
         for (int j = 0; j < calories.length; j++) {
-            if (j == 0) currentResult = (currentResult + ((n - j) * ((int) Math.pow(2, j))));
+            if (j == 0) currentResult = (currentResult + (n * ((int) Math.pow(2, j))));
             else {
-                currentResult = (currentResult + ((n - j) * ((int) Math.pow(2, j))));
+
+                System.out.println("power-"+(int)Math.pow(2,j));
+                System.out.println("value-"+(n-j));
+                System.out.println((currentResult + ((n - j) * ((int) Math.pow(2, j)))));
+                if (n != 0) currentResult = (currentResult + ((n - j) * ((int) Math.pow(2, j))));
 
             }
 
