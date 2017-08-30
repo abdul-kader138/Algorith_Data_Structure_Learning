@@ -22,6 +22,8 @@ public class AppleAndOrange {
         for(int orange_i=0; orange_i < n; orange_i++){
             orange[orange_i] = in.nextInt();
         }
+
+        // Start Solution from here
         int countApple=0;
         int countOrange=0;
         List<Integer> appleList=new ArrayList<>();
