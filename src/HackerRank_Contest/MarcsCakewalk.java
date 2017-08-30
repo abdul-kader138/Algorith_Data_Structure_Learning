@@ -13,13 +13,15 @@ public class MarcsCakewalk {
             calories[calories_i] = in.nextInt();
         }
 
-        double currentResult=0;
-        int startNum=0;
-        for(int j=0;j<calories.length;j++){
-            if(j==0) currentResult = (0+((n-j)*Math.pow(2,j)));
-            else currentResult=(currentResult+((n-j)*Math.pow(2,j)));
-        }
+        long currentResult = 0;
+        for (int j = 0; j < calories.length; j++) {
+            if (j == 0) currentResult = (currentResult + ((n - j) * ((int) Math.pow(2, j))));
+            else {
+                currentResult = (currentResult + ((n - j) * ((int) Math.pow(2, j))));
 
+            }
+
+        }
         System.out.println(currentResult);
     }
 }
