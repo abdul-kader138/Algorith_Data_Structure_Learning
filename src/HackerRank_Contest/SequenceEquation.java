@@ -1,5 +1,5 @@
 package HackerRank_Contest;
 
-public class StockMaximize {
 
+public class SequenceEquation {
 }
