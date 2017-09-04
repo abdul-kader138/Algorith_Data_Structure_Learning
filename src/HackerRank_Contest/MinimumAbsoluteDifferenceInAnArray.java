@@ -5,10 +5,9 @@ import java.util.*;
 
 public class MinimumAbsoluteDifferenceInAnArray {
 
+
     static int minimumAbsoluteDifference(int n, int[] arr) {
         List<Integer> listObj = new ArrayList<>();
-
-        int c = 1234567891;
         for (int i = 0; i < arr.length; i++) {
             for (int j = (i + 1); j < arr.length; j++) {
                 int val = (arr[i] - arr[j]);
@@ -18,6 +17,7 @@ public class MinimumAbsoluteDifferenceInAnArray {
         if (listObj.size() != 0) return Collections.min(listObj);
         else return 0;
     }
+
 
 
     public static void main(String[] args) {
