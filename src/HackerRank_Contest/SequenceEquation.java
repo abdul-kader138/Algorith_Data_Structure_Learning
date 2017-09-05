@@ -19,23 +19,31 @@ public class SequenceEquation {
         Map<String, Integer> objList = new HashMap<>();
 
         for (int j = 0; j < arr.length; j++) {
-            objList.put(""+(j+1), arr[j]);
+            objList.put("" + (j + 1), arr[j]);
         }
 
 
+        for (int i = 0; i < arr.length; i++) {
 
-        for(int i=0; i<arr.length;i++){
-
-            int loop=(i+1);
-            int fR=0;
-            for(Map.Entry t:objList.entrySet()){
-                if(loop == (int)t.getValue()){
-                    fR =Integer.parseInt((String)t.getKey());
+            int loop = (i + 1);
+            int fR = 0;
+            for (Map.Entry t : objList.entrySet()) {
+                if (loop == (int) t.getValue()) {
+                    fR = Integer.parseInt((String) t.getKey());
                 }
             }
-            int result=Arrays.asList(arr).indexOf(fR);
-            System.out.println((result+1));
+            int result = Arrays.asList(arr).indexOf(fR);
+            System.out.println((result + 1));
         }
 
+        getRole();
+
+    }
+
+    public static void getRole() {
+        int num = 0;
+        for (int i = 0; i < 20; i++) {
+            System.out.println(i);
+        }
     }
 }
