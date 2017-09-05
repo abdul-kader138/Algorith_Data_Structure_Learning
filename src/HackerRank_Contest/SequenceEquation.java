@@ -36,14 +36,7 @@ public class SequenceEquation {
             System.out.println((result + 1));
         }
 
-        getRole();
-
     }
 
-    public static void getRole() {
-        int num = 0;
-        for (int i = 0; i < 20; i++) {
-            System.out.println(i);
-        }
-    }
+
 }
