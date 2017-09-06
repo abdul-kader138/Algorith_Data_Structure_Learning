@@ -8,7 +8,6 @@ public class BirthdayChocolate {
     static int solve(int n, int[] s, int d, int m) {
         int count = 0;
         for (int i = 0; i < s.length; i++) {
-            int nextVal = 0;
             if ((i + m) <= n) {
                 int result = getNextNumber(i, m, s);
                 if (result == d) count += 1;
