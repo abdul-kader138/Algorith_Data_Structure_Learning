@@ -1,12 +1,10 @@
 package HackerRank_Contest;
 
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class SequenceEquation {
+
     public static void main(String args[]) throws Exception {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
@@ -24,7 +22,6 @@ public class SequenceEquation {
 
 
         for (int i = 0; i < arr.length; i++) {
-
             int loop = (i + 1);
             int fR = 0;
             for (Map.Entry t : objList.entrySet()) {
@@ -35,7 +32,6 @@ public class SequenceEquation {
             int result = Arrays.asList(arr).indexOf(fR);
             System.out.println((result + 1));
         }
-
     }
 
 
