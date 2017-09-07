@@ -9,6 +9,19 @@ public class App {
 
 
 
+        String name="Hello World";
+
+        /*
+        * Params: String, Interface
+        * Here we used the power of Lambda and implementing interface using Lambda
+        *
+        *
+        *
+        * */
+        MethodReferenceTest methodReferenceTest=new MethodReferenceTest();
+        methodReferenceTest.getResult(name,(val)->{
+            return val.toUpperCase();
+        });
 
 
     }
