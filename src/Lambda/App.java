@@ -67,5 +67,10 @@ public class App {
         empList.stream().forEach(consumer);
 
 
+
+        /* Example of (forEach without Consumer explicitly implementation)
+        * */
+
+        empList.stream().forEach((a)-> System.out.println(a.getAge()));
     }
 }
