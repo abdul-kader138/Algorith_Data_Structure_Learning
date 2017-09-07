@@ -1,6 +1,10 @@
 package Lambda;
 
 
+/*
+* Used for Method Reference Example
+* */
+
 public class StringParser {
 
     String print(String s) {
