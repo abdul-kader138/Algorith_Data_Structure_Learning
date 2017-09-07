@@ -14,15 +14,20 @@ public class App {
         /*
         * Params: String, Interface
         * Here we used the power of Lambda and implementing interface using Lambda
-        *
-        *
-        *
         * */
-        MethodReferenceTest methodReferenceTest=new MethodReferenceTest();
+
+         MethodReferenceTest methodReferenceTest=new MethodReferenceTest();
         methodReferenceTest.getResult(name,(val)->{
             return val.toUpperCase();
         });
 
 
+        /*
+        * Params: String, Interface
+        * Here we used Method reference of String Parser Class
+        * */
+
+        StringParser stringParser=new StringParser();
+        methodReferenceTest.getResult(name,stringParser::print);
     }
 }
