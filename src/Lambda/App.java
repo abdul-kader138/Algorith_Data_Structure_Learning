@@ -12,10 +12,11 @@ public class App {
 
         String name = "Hello World";
 
-        /*
+        /* Example of (Functional interface)
         * Params: String, Interface
         * Here we used the power of Lambda and implementing interface using Lambda
         * */
+
 
         MethodReferenceTest methodReferenceTest = new MethodReferenceTest();
         methodReferenceTest.getResult(name, (val) -> {
@@ -23,7 +24,9 @@ public class App {
         });
 
 
-        /*
+
+
+        /* Example of (Method reference)
         * Params: String, Interface
         * Here we used Method reference of String Parser Class
         * */
@@ -32,9 +35,13 @@ public class App {
         methodReferenceTest.getResult(name, stringParser::print);
 
 
-       /*
-        * Params: String, Interface
-        * Here we used Method reference of String Parser Class
+
+
+
+       /* Example of (Consumer)
+        * Consumer- Means where interface implementation is defined
+        * Here we define  Consumer Interface accept method definition
+        * and used it at forEach method
         * */
 
 
