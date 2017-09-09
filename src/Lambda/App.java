@@ -2,7 +2,10 @@ package Lambda;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 
 public class App {
@@ -71,6 +74,40 @@ public class App {
         /* Example of (forEach without Consumer explicitly implementation)
         * */
 
-        empList.stream().forEach((a)-> System.out.println(a.getAge()));
+        empList.stream().forEach((a) -> System.out.println(a.getAge()));
+
+
+
+         /* Example of (Map & Reduce)
+        * Map- Get Function & return Stream, here we implemented Function interface method apply()
+        * Reduce- Get BinaryOperator& return Emp obj, here we implemented BinaryOperator interface method apply()
+        *
+        * */
+
+
+        Function<Emp, Emp> function = new Function<Emp, Emp>() {
+            public Emp apply(Emp emp) {
+                String name = emp.getName();
+                emp.setName(name + "----");
+                return emp;
+            }
+        };
+
+        BinaryOperator<Emp> binaryOperator = new BinaryOperator<Emp>() {
+            public Emp apply(Emp o, Emp o2) {
+                Emp emp=new Emp();
+                emp.setName(o.getName()+o2.getName());
+                emp.setAge(o.getAge()+o2.getAge());
+                return emp; // add all
+            }
+        };
+
+        Emp emp =new Emp();
+
+        Stream<Emp> stream = empList.stream();
+        Stream<Emp> stream1 = stream.map(function);
+        Emp s2 = stream1.reduce(emp, binaryOperator);
+        System.out.println(s2.getName());
+        System.out.println(s2.getAge());
     }
 }
