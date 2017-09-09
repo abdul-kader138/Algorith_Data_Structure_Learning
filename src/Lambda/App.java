@@ -79,7 +79,7 @@ public class App {
 
 
 
-         /* Example of (Map & Reduce)
+         /* Example of (Map & Reduce(Explicitly))
         * Map- Get Function & return Stream, here we implemented Function interface method apply()
         * Reduce- Get BinaryOperator & return Emp obj, here we implemented BinaryOperator interface method apply()
         *
@@ -108,6 +108,33 @@ public class App {
         Stream<Emp> stream = empList.stream();
         Stream<Emp> stream1 = stream.map(function);
         Emp s2 = stream1.reduce(emp, binaryOperator);
+        System.out.println(s2.getName());
+        System.out.println(s2.getAge());
+
+
+
+
+         /* Example of (Map & Reduce (Implicitly))
+        * Map- Get Function & return Stream, here we implemented Function interface method apply()
+        * Reduce- Get BinaryOperator & return Emp obj, here we implemented BinaryOperator interface method apply()
+        *
+        * */
+
+
+
+        Emp emp1 =new Emp();
+
+        stream = empList.stream();
+        stream1 = stream.map((a)->{
+            a.setName(a.getName() + "----");
+            return a;
+        });
+        s2 = stream1.reduce(emp1, (a,b)->{
+            Emp emp3=new Emp();
+            emp3.setName(a.getName()+b.getName());
+            emp3.setAge(a.getAge()+b.getAge());
+            return emp3; // Sum age and concat name
+        });
         System.out.println(s2.getName());
         System.out.println(s2.getAge());
     }
