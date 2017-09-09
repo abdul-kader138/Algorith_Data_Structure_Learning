@@ -81,7 +81,7 @@ public class App {
 
          /* Example of (Map & Reduce)
         * Map- Get Function & return Stream, here we implemented Function interface method apply()
-        * Reduce- Get BinaryOperator& return Emp obj, here we implemented BinaryOperator interface method apply()
+        * Reduce- Get BinaryOperator & return Emp obj, here we implemented BinaryOperator interface method apply()
         *
         * */
 
