@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 
@@ -96,14 +97,14 @@ public class App {
 
         BinaryOperator<Emp> binaryOperator = new BinaryOperator<Emp>() {
             public Emp apply(Emp o, Emp o2) {
-                Emp emp=new Emp();
-                emp.setName(o.getName()+o2.getName());
-                emp.setAge(o.getAge()+o2.getAge());
+                Emp emp = new Emp();
+                emp.setName(o.getName() + o2.getName());
+                emp.setAge(o.getAge() + o2.getAge());
                 return emp; // Sum age and concat name
             }
         };
 
-        Emp emp =new Emp();
+        Emp emp = new Emp();
 
         Stream<Emp> stream = empList.stream();
         Stream<Emp> stream1 = stream.map(function);
@@ -121,21 +122,45 @@ public class App {
         * */
 
 
-
-        Emp emp1 =new Emp();
+        Emp emp1 = new Emp();
 
         stream = empList.stream();
-        stream1 = stream.map((a)->{
+        stream1 = stream.map((a) -> {
             a.setName(a.getName() + "----");
             return a;
         });
-        s2 = stream1.reduce(emp1, (a,b)->{
-            Emp emp3=new Emp();
-            emp3.setName(a.getName()+b.getName());
-            emp3.setAge(a.getAge()+b.getAge());
+        s2 = stream1.reduce(emp1, (a, b) -> {
+            Emp emp3 = new Emp();
+            emp3.setName(a.getName() + b.getName());
+            emp3.setAge(a.getAge() + b.getAge());
             return emp3; // Sum age and concat name
         });
         System.out.println(s2.getName());
         System.out.println(s2.getAge());
+
+
+
+
+
+    /* Example of (Predicate)
+        * Predicate- It is used for test object in various combination
+        * testVal- Here we define implementation of predicate interface method test()
+        * predicate-Here we user method reference
+        *
+        * */
+
+        Predicate<Emp> predicate=App::testVal;
+        System.out.println(predicate.test(empList.get(1)));
+
+     }
+
+
+
+
+    public static boolean testVal(Emp emp){
+        if(emp.getAge()<30) return true;
+        else return false;
     }
+
 }
+
