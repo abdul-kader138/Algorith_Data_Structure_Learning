@@ -59,11 +59,11 @@ public class App {
 
         Emp e1 = new Emp();
         e1.setName("Abdul Kader Babu");
-        e1.setAge(31);
+        e1.setAge(28);
 
         Emp e2 = new Emp();
         e2.setName("DIP");
-        e2.setAge(31);
+        e2.setAge(27);
 
         List<Emp> empList = Arrays.asList(e, e1, e2);
 
@@ -75,6 +75,7 @@ public class App {
         * */
 
         empList.stream().forEach((a) -> System.out.println(a.getAge()));
+
 
 
 
