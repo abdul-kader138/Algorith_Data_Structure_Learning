@@ -98,7 +98,7 @@ public class App {
                 Emp emp=new Emp();
                 emp.setName(o.getName()+o2.getName());
                 emp.setAge(o.getAge()+o2.getAge());
-                return emp; // add all
+                return emp; // Sum age and concat name
             }
         };
 
