@@ -1,8 +1,9 @@
 package Lambda;
 
-
+/**
+ * Created by a.kader on 9/9/2017.
+ */
 public class Emp {
-
     String name;
     int age;
 
