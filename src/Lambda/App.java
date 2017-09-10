@@ -2,6 +2,7 @@ package Lambda;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.*;
 import java.util.stream.Stream;
 
@@ -181,6 +182,20 @@ public class App {
         supplierEmp.setAge(38);
         System.out.println(supplierEmp.toString());
 
+
+
+
+
+
+
+          /* Example of (Optional)
+        * Optional- validate object -null,empty etc
+        *
+        * */
+
+
+        Optional<Emp> optional=Optional.ofNullable(supplierEmp);
+        System.out.println(optional.get().getName());
     }
 
 
@@ -188,6 +203,13 @@ public class App {
 
     public static boolean testVal(Emp emp) {
         if (emp.getAge() < 30) return true;
+        else return false;
+    }
+
+
+
+    public static Boolean testOptional(Emp emp){
+        if(emp == null) return true;
         else return false;
     }
 
