@@ -2,10 +2,7 @@ package Lambda;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.*;
 import java.util.stream.Stream;
 
 
@@ -149,16 +146,31 @@ public class App {
         *
         * */
 
-        Predicate<Emp> predicate=App::testVal;
+        Predicate<Emp> predicate = App::testVal;
         System.out.println(predicate.test(empList.get(1)));
 
-     }
 
 
 
 
-    public static boolean testVal(Emp emp){
-        if(emp.getAge()<30) return true;
+
+      /* Example of (Supplier)
+        * Supplier- Provide new Object like factory method
+        *
+        * */
+
+
+        Supplier<Emp> supplier= Emp::new;
+
+        Emp supplierEmp=supplier.get();
+        supplierEmp.setName("Test-001");
+        supplierEmp.setAge(38);
+
+    }
+
+
+    public static boolean testVal(Emp emp) {
+        if (emp.getAge() < 30) return true;
         else return false;
     }
 
