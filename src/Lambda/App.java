@@ -69,10 +69,16 @@ public class App {
 
 
 
+
+
         /* Example of (forEach without Consumer explicitly implementation)
         * */
 
         empList.stream().forEach((a) -> System.out.println(a.getAge()));
+
+
+
+
 
 
 
@@ -112,6 +118,10 @@ public class App {
 
 
 
+
+
+
+
          /* Example of (Map & Reduce (Implicitly))
         * Map- Get Function & return Stream, here we implemented Function interface method apply()
         * Reduce- Get BinaryOperator & return Emp obj, here we implemented BinaryOperator interface method apply()
@@ -139,6 +149,9 @@ public class App {
 
 
 
+
+
+
     /* Example of (Predicate)
         * Predicate- It is used for test object in various combination
         * testVal- Here we define implementation of predicate interface method test()
@@ -154,6 +167,8 @@ public class App {
 
 
 
+
+
       /* Example of (Supplier)
         * Supplier- Provide new Object like factory method
         *
@@ -161,12 +176,14 @@ public class App {
 
 
         Supplier<Emp> supplier= Emp::new;
-
         Emp supplierEmp=supplier.get();
         supplierEmp.setName("Test-001");
         supplierEmp.setAge(38);
+        System.out.println(supplierEmp.toString());
 
     }
+
+
 
 
     public static boolean testVal(Emp emp) {
