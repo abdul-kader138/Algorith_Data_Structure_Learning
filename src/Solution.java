@@ -8,6 +8,8 @@ public class Solution {
         int high = x.length - 1;
         quickSort(x, low, high);
         System.out.println(Arrays.toString(x));
+
+        getMidNumber(100);
     }
 
     public static void quickSort(int[] arr, int low, int high) {
@@ -24,6 +26,8 @@ public class Solution {
             while (arr[i] < pivot) {
                 i++;
             }
+
+
             while (arr[j] > pivot) {
                 j--;
             }
@@ -35,11 +39,25 @@ public class Solution {
                 j--;
             }
         }
+
+
 // recursively sort two sub parts
         if (low < j)
             quickSort(arr, low, j);
         if (high > i)
             quickSort(arr, i, high);
+    }
+
+
+
+    private static void getMidNumber(int num){
+
+        int t=0;
+        int z=0;
+        for(int i=0; i<=100; i++){
+            if(num ==100 && i==1) System.out.println(num);
+        }
+
     }
 }
 
