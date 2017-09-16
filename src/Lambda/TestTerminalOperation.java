@@ -75,14 +75,20 @@ public class TestTerminalOperation {
 
         List<Emp> empList = new ArrayList<>();
         Emp emp = new Emp("PPFL", 30);
-        Emp emp1 = new Emp("PPL", 40);
-        Emp emp2 = new Emp("PFL", 50);
-        Emp emp3 = new Emp("PCFL", 20);
+        Emp emp1 = new Emp("PPFL1", 30);
+        Emp emp2 = new Emp("PPFL2", 30);
+        Emp emp3 = new Emp("PPL", 40);
+        Emp emp4 = new Emp("PFL", 50);
+        Emp emp5 = new Emp("PFL1", 50);
+        Emp emp6 = new Emp("PCFL", 20);
 
         empList.add(emp);
         empList.add(emp1);
         empList.add(emp2);
         empList.add(emp3);
+        empList.add(emp4);
+        empList.add(emp5);
+        empList.add(emp6);
 
         Function function = new Function() {
             @Override
@@ -108,7 +114,7 @@ public class TestTerminalOperation {
 
 
            /* average() only work on Arrays */
-        Arrays.stream(new int[] {1, 2, 3})
+        Arrays.stream(new int[]{1, 2, 3})
                 .map(n -> n)
                 .average()
                 .ifPresent(System.out::println);
@@ -158,8 +164,8 @@ public class TestTerminalOperation {
           * */
 
 
-        Optional<Emp> empObj=empList.stream().findFirst();
-        Optional<Emp> empObj1=empList.stream().findAny();
+        Optional<Emp> empObj = empList.stream().findFirst();
+        Optional<Emp> empObj1 = empList.stream().findAny();
         System.out.println(empObj.get().getName());
         System.out.println(empObj1.get().getName());
 
@@ -221,32 +227,43 @@ public class TestTerminalOperation {
 
 
 
-         /* Example of (Collect-Collectors.averagingInt())
-          * returns a Collector that produces the arithmetic mean
-          * of an integer-valued function applied to the input elements
+         /* Example of (Collect-Collectors.groupingBy())
+          * Using this we can groupBy a list base on its one
+          * specified value. Here we used emp age for groupBy
+          * empList.
           * */
 
 
-        ToIntFunction<Integer> integerToIntFunction1 = new ToIntFunction<Integer>() {
+        Function<Emp, Integer> function1 = new Function<Emp, Integer>() {
             @Override
-            public int applyAsInt(Integer value) {
-                return value;
+            public Integer apply(Emp emp5) {
+                return emp5.getAge();
             }
         };
 
+           /* implement Explicitly */
+        Map<Integer, List<Emp>> l12 = empList.stream().collect(Collectors.groupingBy(function1));
+        l12.entrySet().forEach(a -> {
+            for (Emp pList : a.getValue()) {
+                Emp p = (Emp) pList;
+                System.out.println(p.getName());
+            }
+        });
+
 
             /* implement implicitly */
-        double average11 = Stream.of(1, 2, 2, 4, 4).collect(Collectors.averagingInt(a -> {
-            return a;
+        Map<Integer, List<Emp>> l2 = empList.stream().collect(Collectors.groupingBy(a -> {
+            Emp e12 = (Emp) a;
+            return e12.getAge();
         }));
-        System.out.println(average);
 
-           /* implement Explicitly */
-        double average12 = Stream.of(1, 2, 2, 4, 4).collect(Collectors.averagingInt(integerToIntFunction));
-
+        l2.entrySet().forEach(System.out::println);
 
 
     }
+
+
+
 
 
     private static Integer[] getList(Object[] obj) {
