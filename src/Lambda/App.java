@@ -184,6 +184,8 @@ public class App {
 
 
 
+        Supplier<String> t = ()->{return "Test-007";};
+        System.out.println(t.get());
 
 
 

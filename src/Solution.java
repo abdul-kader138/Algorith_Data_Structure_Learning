@@ -8,6 +8,7 @@ public class Solution {
         int high = x.length - 1;
         quickSort(x, low, high);
         System.out.println(Arrays.toString(x));
+        getValue();
     }
 
     public static void quickSort(int[] arr, int low, int high) {
@@ -24,7 +25,6 @@ public class Solution {
             while (arr[i] < pivot) {
                 i++;
             }
-
 
             while (arr[j] > pivot) {
                 j--;
@@ -47,6 +47,10 @@ public class Solution {
     }
 
 
+    private static void getValue(){
+        int val=0;
+        for(int i=0;i<10;i++) System.out.println(i+1);
+    }
 
 }
 
