@@ -4,6 +4,7 @@ package Lambda;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -62,45 +63,69 @@ public class TestTerminalOperation {
 
         /* Example of (Map-max,min)
           * Stream.max will find the maximum element of the
+          *
+          * Stream.max will find the minimum element of the
+          *
+          *
           * stream according to a specified comparator
           * */
 
 
-
-        List<Emp> empList=new ArrayList<>();
-        Emp emp=new Emp("PPFL",30);
-        Emp emp1=new Emp("PPL",40);
-        Emp emp2=new Emp("PFL",50);
-        Emp emp3=new Emp("PCFL",20);
+        List<Emp> empList = new ArrayList<>();
+        Emp emp = new Emp("PPFL", 30);
+        Emp emp1 = new Emp("PPL", 40);
+        Emp emp2 = new Emp("PFL", 50);
+        Emp emp3 = new Emp("PCFL", 20);
 
         empList.add(emp);
         empList.add(emp1);
         empList.add(emp2);
         empList.add(emp3);
 
-        Function function=new Function() {
+        Function function = new Function() {
             @Override
             public Integer apply(Object o) {
-                Emp emp=(Emp) o;
+                Emp emp = (Emp) o;
                 return emp.getAge();
             }
         };
 
-        Comparator<Integer> comparator=new Comparator<Integer>() {
+        Comparator<Integer> comparator = new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                if(o1<o2) return -1;
-                if(o1>o2) return 1;
+                if (o1 < o2) return -1;
+                if (o1 > o2) return 1;
                 return 0;
             }
         };
 
-        Optional<Integer> h=empList.stream().map(function).min(comparator);
-        Optional<Integer> l=empList.stream().map(function).min(comparator);
+        Optional<Integer> h = empList.stream().map(function).min(comparator);
+        Optional<Integer> l = empList.stream().map(function).min(comparator);
         System.out.println(h.get());
         System.out.println(l.get());
 
 
+
+        /* Example of (AnyMatch,AllMatch)
+          * Stream.anyMatch will find out whether at least one
+          * of the elements in the stream matches a given predicate.
+          *
+          * Stream.allMatch will check every element in the
+          * stream and find out if it matches the predicate.
+          * */
+
+        Predicate<Emp> predicate = new Predicate<Emp>() {
+            @Override
+            public boolean test(Emp emp) {
+                if (emp.getAge() == 50) return true;
+                return false;
+            }
+        };
+
+        boolean result = empList.stream().anyMatch(predicate);
+        boolean result1 = empList.stream().allMatch(predicate);
+        System.out.println(result);
+        System.out.println(result1);
 
 
 
@@ -149,13 +174,7 @@ public class TestTerminalOperation {
         double average1 = Stream.of(1, 2, 2, 4, 4).collect(Collectors.averagingInt(integerToIntFunction));
 
 
-
-
-
-
     }
-
-
 
 
     private static Integer[] getList(Object[] obj) {
