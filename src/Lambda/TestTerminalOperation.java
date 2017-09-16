@@ -260,10 +260,47 @@ public class TestTerminalOperation {
         l2.entrySet().forEach(System.out::println);
 
 
+
+
+
+
+
+
+
+        /* Example of (Collect-Collectors.summarizingInt())
+          * Using this we can summarized all info(max,min,count,sum)
+          * for a given list.
+          * */
+
+
+        ToIntFunction<Emp> integerToIntFunction1 = new ToIntFunction<Emp>() {
+            @Override
+            public int applyAsInt(Emp value) {
+                return value.getAge();
+            }
+        };
+
+
+
+        /* implement Explicitly */
+        IntSummaryStatistics intSummaryStatistics = empList.stream().collect(Collectors.summarizingInt(integerToIntFunction1));
+        System.out.println("Count-" + intSummaryStatistics.getCount());
+        System.out.println("Max-" + intSummaryStatistics.getMax());
+        System.out.println("Min-" + intSummaryStatistics.getMin());
+        System.out.println("Sum-" + intSummaryStatistics.getSum());
+
+
+
+         /* implement implicitly */
+        IntSummaryStatistics intSummaryStatistics1 = empList.stream().collect(Collectors.summarizingInt((a) -> {
+            return a.getAge();
+        }));
+
+        System.out.println("Count-" + intSummaryStatistics1.getCount());
+        System.out.println("Max-" +   intSummaryStatistics1.getMax());
+        System.out.println("Min-" +   intSummaryStatistics1.getMin());
+        System.out.println("Sum-" +   intSummaryStatistics1.getSum());
     }
-
-
-
 
 
     private static Integer[] getList(Object[] obj) {
