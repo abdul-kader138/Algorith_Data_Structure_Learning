@@ -61,6 +61,8 @@ public class TestTerminalOperation {
 
 
 
+
+
         /* Example of (Map-max,min)
           * Stream.max will find the maximum element of the
           *
@@ -99,10 +101,17 @@ public class TestTerminalOperation {
             }
         };
 
-        Optional<Integer> h = empList.stream().map(function).min(comparator);
+        Optional<Integer> h = empList.stream().map(function).max(comparator);
         Optional<Integer> l = empList.stream().map(function).min(comparator);
         System.out.println(h.get());
         System.out.println(l.get());
+
+
+           /* average() only work on Arrays */
+        Arrays.stream(new int[] {1, 2, 3})
+                .map(n -> n)
+                .average()
+                .ifPresent(System.out::println);
 
 
 
@@ -135,6 +144,9 @@ public class TestTerminalOperation {
 
 
 
+
+
+
        /* Example of (findFirst,findAny)
           * Stream.findFirst will find the first element in the stream
           * which is resembles the same behavior as getting the first
@@ -150,6 +162,8 @@ public class TestTerminalOperation {
         Optional<Emp> empObj1=empList.stream().findAny();
         System.out.println(empObj.get().getName());
         System.out.println(empObj1.get().getName());
+
+
 
 
 
@@ -197,6 +211,39 @@ public class TestTerminalOperation {
 
            /* implement Explicitly */
         double average1 = Stream.of(1, 2, 2, 4, 4).collect(Collectors.averagingInt(integerToIntFunction));
+
+
+
+
+
+
+
+
+
+
+         /* Example of (Collect-Collectors.averagingInt())
+          * returns a Collector that produces the arithmetic mean
+          * of an integer-valued function applied to the input elements
+          * */
+
+
+        ToIntFunction<Integer> integerToIntFunction1 = new ToIntFunction<Integer>() {
+            @Override
+            public int applyAsInt(Integer value) {
+                return value;
+            }
+        };
+
+
+            /* implement implicitly */
+        double average11 = Stream.of(1, 2, 2, 4, 4).collect(Collectors.averagingInt(a -> {
+            return a;
+        }));
+        System.out.println(average);
+
+           /* implement Explicitly */
+        double average12 = Stream.of(1, 2, 2, 4, 4).collect(Collectors.averagingInt(integerToIntFunction));
+
 
 
     }
