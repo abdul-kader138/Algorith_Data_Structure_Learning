@@ -209,15 +209,14 @@ public class TestTerminalOperation {
           * */
 
 
-
-        Function<Emp,Integer> f=new Function<Emp,Integer>() {
+        Function<Emp, Integer> f = new Function<Emp, Integer>() {
             @Override
             public Integer apply(Emp e) {
                 return e.getAge();
             }
         };
 
-        Function<Emp,Emp> f1=new Function<Emp,Emp>() {
+        Function<Emp, Emp> f1 = new Function<Emp, Emp>() {
             @Override
             public Emp apply(Emp e) {
                 return e;
@@ -238,15 +237,17 @@ public class TestTerminalOperation {
 
 
           /* implement Explicitly */
-        Map<Integer,Emp> eList = empList1.stream().collect(Collectors.toMap(
-               f,f1));
+        Map<Integer, Emp> eList = empList1.stream().collect(Collectors.toMap(
+                f, f1));
         eList.entrySet().forEach(System.out::println);
 
 
         /* implement implicitly */
-        Map<Integer,Emp> eList1 = empList1.stream().collect(Collectors.toMap(
-                p->p.getAge(),p -> p));
+        Map<Integer, Emp> eList1 = empList1.stream().collect(Collectors.toMap(
+                p -> p.getAge(), p -> p));
         eList1.entrySet().forEach(System.out::println);
+
+
 
 
 
@@ -359,9 +360,30 @@ public class TestTerminalOperation {
         }));
 
         System.out.println("Count-" + intSummaryStatistics1.getCount());
-        System.out.println("Max-" +   intSummaryStatistics1.getMax());
-        System.out.println("Min-" +   intSummaryStatistics1.getMin());
-        System.out.println("Sum-" +   intSummaryStatistics1.getSum());
+        System.out.println("Max-" + intSummaryStatistics1.getMax());
+        System.out.println("Min-" + intSummaryStatistics1.getMin());
+        System.out.println("Sum-" + intSummaryStatistics1.getSum());
+
+
+
+
+
+
+
+
+
+         /* Example of (Collect-Collectors.joining())
+          * joins all list into a single string
+          * join collector accepts a delimiter as well
+          * as an optional prefix and suffix.
+          * */
+
+
+        String info = empList1.stream().map((p) -> p.getName()).collect(Collectors.joining(",", "Paragon Existing Company name are ", " which are functional"));
+        System.out.println(info);
+
+
+
     }
 
 
