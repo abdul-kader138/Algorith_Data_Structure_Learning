@@ -106,6 +106,10 @@ public class TestTerminalOperation {
 
 
 
+
+
+
+
         /* Example of (AnyMatch,AllMatch)
           * Stream.anyMatch will find out whether at least one
           * of the elements in the stream matches a given predicate.
@@ -126,6 +130,27 @@ public class TestTerminalOperation {
         boolean result1 = empList.stream().allMatch(predicate);
         System.out.println(result);
         System.out.println(result1);
+
+
+
+
+
+       /* Example of (findFirst,findAny)
+          * Stream.findFirst will find the first element in the stream
+          * which is resembles the same behavior as getting the first
+          * element in a list.
+          *
+          *
+          * Similar to finding any element in array, Stream.findAny
+          * will find any element in a given stream.
+          * */
+
+
+        Optional<Emp> empObj=empList.stream().findFirst();
+        Optional<Emp> empObj1=empList.stream().findAny();
+        System.out.println(empObj.get().getName());
+        System.out.println(empObj1.get().getName());
+
 
 
 
