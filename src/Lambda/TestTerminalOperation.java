@@ -2,10 +2,8 @@ package Lambda;
 
 
 import java.util.*;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
+import java.util.function.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -68,7 +66,7 @@ public class TestTerminalOperation {
         /* Example of (Map-max,min)
           * Stream.max will find the maximum element of the
           *
-          * Stream.max will find the minimum element of the
+          * Stream.min will find the minimum element of the
           *
           *
           * stream according to a specified comparator
@@ -383,6 +381,60 @@ public class TestTerminalOperation {
         System.out.println(info);
 
 
+
+
+
+
+
+
+
+        /* Example of (Collect-Collectors.of())
+          *  transform all emp of the stream into a single string consisting of all
+          *  names in upper letters separated by the | pipe character. In order to
+          *  achieve this we create a new collector via Collector.of(). We have to
+          *  pass the four ingredients of a collector: a supplier, an accumulator,
+          *  a combiner and a finisher.
+          * */
+
+
+        BiConsumer<StringJoiner, Emp> biConsumer = new BiConsumer<StringJoiner, Emp>() {
+            @Override
+            public void accept(StringJoiner stringJoiner, Emp emp) {
+                stringJoiner.add(emp.getName().toUpperCase());
+                System.out.println("yyyyyy");
+            }
+        };
+
+        BinaryOperator<StringJoiner> binaryOperator1 = new BinaryOperator<StringJoiner>() {
+            @Override
+            public StringJoiner apply(StringJoiner stringJoiner, StringJoiner stringJoiner1) {
+                System.out.println("yyyyyy");
+                return stringJoiner.merge(stringJoiner1);
+            }
+        };
+
+
+        Collector<Emp, StringJoiner, String> collector = Collector.of(
+                () -> new StringJoiner("|"),
+                (j, p) -> j.add(p.name.toUpperCase()),
+//                (m, n) -> m.merge(n),
+                binaryOperator1,
+                StringJoiner::toString
+
+        );
+
+
+        Collector<Emp, StringJoiner, String> collector1 = Collector.of(
+                () -> new StringJoiner("|"),
+                biConsumer,
+                (m, n) -> m.merge(n),
+                StringJoiner::toString
+
+        );
+        String name = empList1.stream().collect(collector);
+        String name1 = empList1.stream().collect(collector1);
+        System.out.println(name);
+        System.out.println(name1);
 
     }
 
