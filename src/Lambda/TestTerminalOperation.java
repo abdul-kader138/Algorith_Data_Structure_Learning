@@ -33,6 +33,8 @@ public class TestTerminalOperation {
 
 
 
+
+
          /* Example of (reduce)
           * Stream.reduce operations are commonly found in statistic operations
           * such as long summary statistics and combine the stream elements
@@ -190,6 +192,66 @@ public class TestTerminalOperation {
             return a;
         }));
         System.out.println("Average -" + b);
+
+
+
+
+
+
+
+
+
+
+
+        /* Example of (Collect-Collectors.toMap())
+          * The Stream.collect terminal operation will convert
+          * the stream into some other container such as a Map.
+          * */
+
+
+
+        Function<Emp,Integer> f=new Function<Emp,Integer>() {
+            @Override
+            public Integer apply(Emp e) {
+                return e.getAge();
+            }
+        };
+
+        Function<Emp,Emp> f1=new Function<Emp,Emp>() {
+            @Override
+            public Emp apply(Emp e) {
+                return e;
+            }
+        };
+
+
+        List<Emp> empList1 = new ArrayList<>();
+        Emp emp7 = new Emp("PPFL", 30);
+        Emp emp8 = new Emp("PPFL1", 50);
+        Emp emp9 = new Emp("PPFL2", 70);
+        Emp emp10 = new Emp("PPL", 40);
+
+        empList1.add(emp7);
+        empList1.add(emp8);
+        empList1.add(emp9);
+        empList1.add(emp10);
+
+
+          /* implement Explicitly */
+        Map<Integer,Emp> eList = empList1.stream().collect(Collectors.toMap(
+               f,f1));
+        eList.entrySet().forEach(System.out::println);
+
+
+        /* implement implicitly */
+        Map<Integer,Emp> eList1 = empList1.stream().collect(Collectors.toMap(
+                p->p.getAge(),p -> p));
+        eList1.entrySet().forEach(System.out::println);
+
+
+
+
+
 
 
 
