@@ -7,6 +7,15 @@ public class Emp {
     String name;
     int age;
 
+
+    public Emp() {
+    }
+
+    public Emp(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
     public String getName() {
         return name;
     }
