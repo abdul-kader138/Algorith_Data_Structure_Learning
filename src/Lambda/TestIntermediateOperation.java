@@ -1,10 +1,20 @@
 package Lambda;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TestIntermediateOperation {
 
@@ -97,6 +107,88 @@ public class TestIntermediateOperation {
         }).collect(Collectors.toList());
         empObj1.forEach(System.out::println);
 
+
+
+
+
+
+
+        /* Example of (map())
+          *  Stream.map will transform the elements elements in a
+          *  stream using the provided java.util.function.Function.
+          * A function is a method that accepts an argument and produces
+          * a result. They are commonly used for transforming collections
+          * and can be seen in the transforming a list to a map example.
+          * */
+
+
+        Function<Emp, Integer> function = new Function<Emp, Integer>() {
+            @Override
+            public Integer apply(Emp emp) {
+                return emp.getAge();
+            }
+        };
+
+
+        List<Integer> list = empList.parallelStream().map(function).collect(Collectors.toList());
+        list.forEach(System.out::println);
+
+
+
+
+        /* Example of (flatMap())
+        * Stream.flatmap will transform each element into zero or more elements
+        * by a way of another stream. To demonstrate, we pulled code snippet from
+        * how to count unique words in a file example. Using java 7 file api,
+        * we will read all lines from a file as a Stream. Then calling Stream.
+        * flatmap we will break the line into words elements. If we had a line
+        * made up of "the horse was walking down the street", this line would be
+        * broken into ["the", "horse", "was", "walking", "down", "the", "street"].
+        * Calling the the Stream.distinct method will find all unique occurrences of words.
+        * */
+
+
+        File file = new File("test.txt");
+
+
+        long wordCount = 0;
+        Path textFilePath = Paths.get("E:\\Test\\WordCount.txt");
+        try {
+            Stream<String> fileLines = Files.lines(textFilePath, Charset.defaultCharset());
+            wordCount = fileLines.flatMap(line -> Arrays.stream(line.split(" "))).count();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        System.out.println("Number of words in WordCount.txt: " + wordCount);
+
+
+
+
+        /*  Example of peek()
+        *
+        *
+        *
+        *
+        *
+        *
+        *
+        * */
+
+
+        Consumer<Emp> emp31 = new Consumer<Emp>() {
+            @Override
+            public void accept(Emp emp) {
+                if (emp.getName().length() >= 4) System.out.println(emp.getName());
+            }
+        };
+
+
+        List<String> nameList = empList.parallelStream().peek(emp31).map(a -> {
+            Emp ac = (Emp) a;
+            return ac.getName();
+        }).collect(Collectors.toList());
+        System.out.println("================================");
+//        nameList.forEach(System.out::println);
 
     }
 }
