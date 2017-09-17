@@ -165,13 +165,9 @@ public class TestIntermediateOperation {
 
 
         /*  Example of peek()
-        *
-        *
-        *
-        *
-        *
-        *
-        *
+        * The Stream.peek is extremely useful during debugging.
+        * It allows you to peek into the stream before an action
+        * is encountered.
         * */
 
 
