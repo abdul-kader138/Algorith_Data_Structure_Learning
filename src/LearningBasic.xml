@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE employee SYSTEM "LearningBasic.dtd" >
+<employee>
+    <name id="babu" s="5">Abdul kader</name>
+    <age>31</age>
+    <address>
+        <house>38</house>
+        <road>11</road>
+        <city>Dhaka</city>
+        <country>
+            <state>BD</state>
+            Bangladesh
+        </country>
+    </address>
+    &test;
+</employee>

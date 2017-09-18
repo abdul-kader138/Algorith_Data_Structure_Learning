@@ -1,0 +1,13 @@
+<!ELEMENT employee (name? age,address)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT age (#PCDATA)>
+        <!ELEMENT address (#PCDATA,house,road,city,country)>
+        <!ELEMENT house (#PCDATA)>
+        <!ELEMENT road (#PCDATA)>
+        <!ELEMENT city (#PCDATA)>
+        <!ELEMENT country (state,#PCDATA)>
+        <!ELEMENT state (#PCDATA)>
+        <!ATTLIST name id CDATA #REQUIRED>
+        <!ATTLIST age id CDATA #IMPLIED>
+        <!ATTLIST name s CDATA #REQUIRED>
+        <!ENTITY test "Hello">
