@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
-<!DOCTYPE employee SYSTEM "LearningBasic.dtd" >
+<!DOCTYPE employee SYSTEM "LearningBasic.dtd" [
+        <!ENTITY yest "&#97;">
+        ]>
 <employee>
     <name id="babu" s="5">Abdul kader</name>
-    <age>31</age>
+    <age id="200">31</age>
     <address>
         <house>38</house>
         <road>11</road>
@@ -11,6 +13,7 @@
             <state>BD</state>
             Bangladesh
         </country>
+        &yest;
     </address>
-    &test;
+
 </employee>

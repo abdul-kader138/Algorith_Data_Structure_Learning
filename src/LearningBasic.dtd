@@ -10,4 +10,3 @@
         <!ATTLIST name id CDATA #REQUIRED>
         <!ATTLIST age id CDATA #IMPLIED>
         <!ATTLIST name s CDATA #REQUIRED>
-        <!ENTITY test "Hello">
