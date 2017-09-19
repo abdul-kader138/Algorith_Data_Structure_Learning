@@ -1,0 +1,23 @@
+<?xml version = "1.0"?>
+<xsBabu:schema xmlns:xsBabu="http://www.w3.org/2001/XMLSchema"
+               targetNamespace="http://www.javatpoint.com"
+               xmlns="http://www.javatpoint.com"
+               elementFormDefault="qualified">
+
+    <xsBabu:element name="class">
+        <xsBabu:complexType>
+            <xsBabu:sequence>
+                <xsBabu:element name="student" minOccurs="0" maxOccurs="unbounded"
+                                type="studentType"/>
+            </xsBabu:sequence>
+        </xsBabu:complexType>
+    </xsBabu:element>
+
+    <xsBabu:complexType name="studentType">
+        <xsBabu:sequence>
+            <xsBabu:element name="name" type="xsBabu:string"></xsBabu:element>
+            <xsBabu:element name="marks" type="xsBabu:integer"></xsBabu:element>
+        </xsBabu:sequence>
+        <xsBabu:attribute name="roll" type="xsBabu:positiveInteger"></xsBabu:attribute>
+    </xsBabu:complexType>
+</xsBabu:schema>

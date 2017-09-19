@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<class xmlns="http://www.javatpoint.com"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.javatpoint.com LearningBasic.xsd">
+    <student roll="1">
+        <name>Abdul Kader</name>
+        <marks>89</marks>
+    </student>
+
+
+    <student roll="2">
+        <name>Babu</name>
+        <marks>90</marks>
+    </student>
+
+    <student roll="3">
+        <name>Babu1</name>
+        <marks>95</marks>
+    </student>
+
+</class>
