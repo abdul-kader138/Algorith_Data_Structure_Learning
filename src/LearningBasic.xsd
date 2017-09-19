@@ -1,8 +1,21 @@
 <?xml version = "1.0"?>
+
+
+<!--
+   xmlns:xsBabu =define the tag name -xsBabu
+   targetNamespace = define a name space to create
+                     unique tag name.
+   xmlns = define a source where XSD will
+                     be available.
+
+   -->
+
 <xsBabu:schema xmlns:xsBabu="http://www.w3.org/2001/XMLSchema"
                targetNamespace="http://www.javatpoint.com"
                xmlns="http://www.javatpoint.com"
                elementFormDefault="qualified">
+
+
 
     <xsBabu:element name="class">
         <xsBabu:complexType>
