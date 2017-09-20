@@ -1,5 +1,8 @@
 package Lambda.Annotation_Example;
 
+import Lambda.Emp;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.function.IntSupplier;
@@ -48,7 +51,30 @@ public class ExampleOfIntStream {
             }
         };
 
-        List<Integer> stream= IntStream.rangeClosed(1,10).boxed().collect(Collectors.toList());
+        List<Integer> stream= IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toList());
         stream.forEach(System.out::println);
+
+
+        List<Emp> empList1 = new ArrayList<>();
+        Emp emp7 = new Emp("PPFL", 30);
+        Emp emp8 = new Emp("PPFL1", 50);
+        Emp emp9 = new Emp("PPFL2", 70);
+        Emp emp10 = new Emp("PPL", 40);
+
+        empList1.add(emp7);
+        empList1.add(emp8);
+        empList1.add(emp9);
+        empList1.add(emp10);
+
+
+        Stream<Emp> empStream=Stream.<Emp>builder().add(emp7).add(emp8).add(emp9).add(emp10).build();
+        empStream.forEach(System.out::println);
+
+
+
     }
+
+
+
+
 }
